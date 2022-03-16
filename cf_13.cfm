@@ -19,9 +19,8 @@
         </form>
     </div>
     <cfif structKeyExists(form,'inputSubmit')>
-        <cfset variables.string = "the quick brown fox jumps over the lazy dog" />
-        <cfset variables.substring = "#form.inputSearch#" />
-        <cfset occurrences= ( Len(string) -Len(Replace(string,substring,'','all'))) / Len(substring) >            
+        <cfinvoke component="components.cf_13" method="getoccurrences" returnvariable="occurrences">  
+        </cfinvoke>           
         <b> <cfdump var="#occurrences#"> times</b>     
     </cfif>
 </body>
