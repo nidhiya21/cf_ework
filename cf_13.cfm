@@ -9,6 +9,7 @@
 <body>
     <div class="container mt-3">
         <h2>Task 13</h2>
+        <cfparam name="form.inputSearch" default="">
         <form  action="cf_13.cfm"  name="form"  method="post">
             <div class="mb-3 mt-3">
                 <p> <b>Given text is :the quick brown fox jumps over the lazy dog</b></p>

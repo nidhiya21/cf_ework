@@ -1,13 +1,13 @@
 <cfcomponent>
 	<cffunction access="public" name="getDates">
-		<cfset todayDate = DateFormat(now(),'yyyy-mm-dd')>
-        <cfset curdatetime = Now()>
-        <cfset todayMonth = month(curdatetime)>
-        <cfset monthInfull= DateFormat(curdatetime,"mmmm")>
-        <cfset dtThisMonth = CreateDate(Year( Now() ),Month( Now() ),1)/>
-        <cfset dtLastDay = (DateAdd( "m", 1, dtThisMonth ) -1)/>
-        <cfset dtMonday = (dtLastDay -DayOfWeek( dtLastDay ) +6)/>
-        <cfif (Month( dtMonday ) NEQ Month( dtThisMonth ))>
+		<cfset variables.todayDate = DateFormat(now(),'yyyy-mm-dd')>
+        <cfset variables.curdatetime = Now()>
+        <cfset variables.todayMonth = month(variables.curdatetime)>
+        <cfset variables.monthInfull= DateFormat(variables.curdatetime,"mmmm")>
+        <cfset variables.dtThisMonth = CreateDate(Year( Now() ),Month( Now() ),1)/>
+        <cfset variables.dtLastDay = (DateAdd( "m", 1, variables.dtThisMonth ) -1)/>
+        <cfset variables.dtMonday = (variables.dtLastDay -DayOfWeek( variables.dtLastDay ) +6)/>
+        <cfif (Month( dtMonday ) NEQ Month( variables.dtThisMonth ))>
             <cfset dtMonday = (dtMonday - 7) />
         </cfif>
         <cfset Variables.monthEnd = DateFormat(DateAdd("m",1, Now()), "mm/d/yyyy")>
@@ -17,29 +17,28 @@
         <cfset Variables.monthEnd3 = DateFormat(DateAdd("d",-2, Variables.monthEnd), "d-mmm-yyyy")>
         <cfset Variables.monthEnd4 = DateFormat(DateAdd("d",-3, Variables.monthEnd), "d-mmm-yyyy")>
         <cfset Variables.monthEnd5 = DateFormat(DateAdd("d",-4, Variables.monthEnd), "d-mmm-yyyy")>   
-        <cfset  style="color:yellow;">  
-        <cfset  style1="color:black;">
-        <cfset  style2="color:orange;">
-        <cfset  style3="color:red;">
-        <cfset  style4="color:green;">
+        <cfset  variables.style="color:yellow;">  
+        <cfset  variables.style1="color:black;">
+        <cfset  variables.style2="color:orange;">
+        <cfset  variables.style3="color:red;">
+        <cfset  variables.style4="color:green;">
         <cfset result = {
-			"todayDate" = todayDate,
-			"todayMonth" = todayMonth,
-			"monthInfull" = monthInfull,
-			"dtMonday" = dtMonday,
-			"dtLastDay" = dtLastDay,
+			"todayDate" = variables.todayDate,
+			"todayMonth" = variables.todayMonth,
+			"monthInfull" = variables.monthInfull,
+			"dtMonday" = variables.dtMonday,
+			"dtLastDay" = variables.dtLastDay,
 			"monthEnd" = Variables.monthEnd,
 			"monthEnd2" = Variables.monthEnd2,
             "monthEnd3" = Variables.monthEnd3,
             "monthEnd4" = Variables.monthEnd4,
             "monthEnd5" = Variables.monthEnd5,
-            "style" = style,
-            "style1" = style1,
-            "style2" = style2,
-            "style3" = style3,
-            "style4" =style4
+            "style" = variables.style,
+            "style1" = variables.style1,
+            "style2" = variables.style2,
+            "style3" = variables.style3,
+            "style4" =variables.style4
 		}>
-
-		<cfreturn result />
+		<cfreturn variables.result />
 	</cffunction>
 </cfcomponent>	 

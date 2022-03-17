@@ -10,6 +10,8 @@
 	<div class="container mt-3">
 		<h3>Task 9</h3>
 		<div class="row ">
+			<cfparam name="form.textKey" default="">
+			<cfparam name="form.textVal" default="">
 			<form  name="form" action="" method="post">
 				<div class="form-group col-md-4">
 					<label>Enter Key:</label>

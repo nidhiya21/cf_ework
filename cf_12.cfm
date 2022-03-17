@@ -10,6 +10,7 @@
     <cfoutput>
         <div class="container mt-3">
             <h2>Task 12</h2>
+            <cfparam name="form.inputNumber" default="">
             <form  action=""  name="form" method="post">
                 <div class="mb-3 mt-3">
                     <label for="number">Enter Number:</label>

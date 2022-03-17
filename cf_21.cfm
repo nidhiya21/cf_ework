@@ -12,24 +12,16 @@
         <h4>Birthday Wishes</h4>
         <cfif structKeyExists(form, 'formSubmit')>
             <cfif structKeyExists(form,"attachment") and len(trim(form.attachment))>
-                <cfset thisDir = expandPath(".")>
-                <cffile action="upload" fileField="attachment" destination="#thisDir#" result="fileUpload" nameconflict="overwrite">
-                <cfif fileUpload.fileWasSaved>
-                    <cfif IsImageFile("#fileUpload.serverfile#")>
-                    <cfmail to="#form.MailTo#"
-                        from="rincekthomas@gmail.com"
-                        subject="Birthday Wishes"
-                        type="text" mimeattach="#fileUpload.serverDirectory#/#fileUpload.serverFile#">
-                        #form.body#
-                    </cfmail>
-                    <cfoutput>
-                        <p>Thank you for sending message.</p>
-                    </cfoutput>
-                    </cfif>
-                </cfif>
+                 <cfinvoke component="components.cf_21" method="greetingMailsent" returnvariable="status">  
+                 </cfinvoke>   
+                 <cfif status eq "success">
+                    <p>Thank you for sending message.</p>
+                 <cfelse>  
+                    <p>Error</p>
+                 </cfif>
             </cfif>
         </cfif>
-        <form action = "cf_21.cfm" method="POST"  enctype="multipart/form-data">
+        <form action = "" method="POST"  enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>Birthday Baby Name</td>

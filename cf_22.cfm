@@ -7,8 +7,8 @@
 <body>
 <cfoutput>
     <h2>Task 22</h2>
-    <cfset matrixjson = '[{"Name":"saravanan","Age":27,"LOCATION":"dubai"},{"Name":"Ram","Age":26,"LOCATION":"Kovilpatti"}]' />
-    <cfset matrixdata=DeserializeJSON(matrixjson)>
+    <cfinvoke component="components.cf_22" method="matrixPrint" returnvariable="matrixdata">  
+    </cfinvoke>
     <table width="50%" >
         <tr>
             <th align="left">Name</th>

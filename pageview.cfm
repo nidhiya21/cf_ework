@@ -6,7 +6,7 @@
 <body>
     <div class="container mt-3">
         <cfif IsDefined("url.id") and IsNumeric(url.id)>
-               <cfinvoke component="cf_28" method="pageView" returnvariable="result">
+               <cfinvoke component="components/cf_28" method="pageView" returnvariable="result">
                     <cfinvokeargument name="pageid"  value = "#url.id#" />
                 </cfinvoke>        
         </cfif>

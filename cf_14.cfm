@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task 14</title>
-    <link href="./css/bootstrap.css" rel="stylesheet" type="text/css"/>         
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 14</title>
+<link href="./css/bootstrap.css" rel="stylesheet" type="text/css"/>         
 </head>
 <body>
 <cfoutput>
     <div class="container">
         <div class="row">
             <h2>Tak 14</h2> 
+            <cfparam name="form.imageName" default="">
+            <cfparam name="form.imageDescription" default="">
+            <cfparam name="form.fileUpload" default="">
             <form action="" name="form" method="post" enctype="multipart/form-data" > 
                 <div class="form-group col-md-4">
                     <label>Image Name</label>

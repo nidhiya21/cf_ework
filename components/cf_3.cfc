@@ -1,11 +1,14 @@
 <cfcomponent output="false"> 
     <cffunction name="displayElement" access="public">
-        <cfset myList="3,8,9,11,12">
-        <cfloop list="#myList#" index="item"> 
-          <cfif item%3==0>
-           <cfset item= #item#>
-          </cfif>
-        </cfloop>
-        <cfreturn item>
-    </cffunction>
+            <cfset variables.number = form.inputNumber/>
+            <cfset variables.result = "" />
+            <cfloop list = "#variables.number#" index = "item">
+                     <cfif item mod 3 EQ 0>
+                            <cfset variables.result=item/>
+                     <cfelse>
+                            <cfcontinue>
+                     </cfif>
+              </cfloop>
+        <cfreturn variables.result>
+    </cffunction>  
 </cfcomponent>

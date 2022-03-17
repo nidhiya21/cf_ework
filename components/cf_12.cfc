@@ -5,8 +5,8 @@
                 SELECT  firstName
                 FROM usersdetail
             </cfquery>
-            <cfset yourRow =  GetSpecificUser.firstName[#inputNum#]/>               
-       <cfreturn yourRow> 
+            <cfset variables.yourRow =  GetSpecificUser.firstName[#inputNum#]/>               
+       <cfreturn variables.yourRow> 
     </cffunction> 
     <cffunction name="GetAllUser" access="public" >       
             <cfquery name = "GetUser"   result="res2" >         

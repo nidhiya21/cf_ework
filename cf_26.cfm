@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Task 26</title>
 <link href="./css/bootstrap.css" rel="stylesheet" type="text/css"/> 
+<link href="./css/welcome.css" rel="stylesheet" type="text/css"/> 
 </head>
 <body>
     <div class="container">
@@ -23,19 +24,19 @@
             </form> 
         </div>
         <cfif structKeyExists(form,'formSubmit')>
-            <cfinvoke component="components.cf_26" method="readText" returnvariable="result">
+            <cfinvoke component="components.cf_26" method="readText" returnvariable="GetWordsAll">
             </cfinvoke>      
-            <cfloop query="result">
-                <cfif #count# GTE 4>
-                    <cfset style="color:red;font-size:25pt;" > 
-                <cfelseif #count# EQ 3>
-                    <cfset style="color:yellow;font-size:22pt;" > 
-                <cfelseif #count# EQ 2>
-                    <cfset style="color:green;font-size:18pt;" > 
+            <cfloop query="GetWordsAll">
+                <cfif #GetWordsAll.count# GTE 4>
+                    <cfset variables.stclass="style1" >
+                <cfelseif #GetWordsAll.count# EQ 3>
+                    <cfset variables.stclass="style2" >
+                <cfelseif #GetWordsAll.count# EQ 2>
+                    <cfset variables.stclass="style3" > 
                 <cfelse>    
-                    <cfset style="color:blue;font-size:14pt;" > 
+                    <cfset variables.stclass="style4" > 
                 </cfif>  
-                <cfoutput><p style=#style#>- #paragraph#(#count#)<p><Bbr></cfoutput>
+                <cfoutput><p class="#stclass#">- #paragraph#(#count#)<p><br></cfoutput>
             </cfloop>   
         </cfif>                 
     </div>

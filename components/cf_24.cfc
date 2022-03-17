@@ -1,18 +1,18 @@
 <cfcomponent>
     <cffunction name="searchUser" access="remote" returnFormat="JSON">
         <cfargument name="useremail" type="any" required="true">
-        <cfquery name="searchUserMail">
+        <cfquery name="local.searchUserMail">
                 SELECT username
                         FROM subscribers 
                 WHERE useremail = <cfqueryparam cfsqltype="cf_sql_varchar"  value="#arguments.useremail#">             
         </cfquery> 
-        <cfset cfcResults = searchUserMail.recordcount>
-        <cfif cfcResults NEQ 0>
+        <cfset variables.cfcResults = searchUserMail.recordcount>
+        <cfif  variables.cfcResults NEQ 0>
     <!---       <cfset cfcResults1.status = "400"> --->
-            <cfset cfcResults1 = "Error">    
+            <cfset  variables.cfcResults1 = "Error">    
         <cfelse>
     <!---       <cfset cfcResults1.status = "200"> --->
-            <cfset cfcResults1 = "Success">             
+            <cfset  variables.cfcResults1 = "Success">             
         </cfif>
         <cfif #cfcResults1# == "Error">
             <cfreturn false>
@@ -24,7 +24,7 @@
         <cfargument name="username" type="string" required="yes" >
         <cfargument name="useremail" type="string" required="yes" >
         <cfif (isDefined("form.inputSubmit"))>       
-            <cfquery name="AddUser" result="subscriberResult"> 
+            <cfquery name="local.AddUser" result="subscriberResult"> 
                 INSERT INTO subscribers
                 (
                     username,useremail
@@ -36,7 +36,7 @@
                 ) 
             </cfquery>          
         </cfif>
-        <cfset getNumberOfRecords = listLen(#subscriberResult.generated_key#)> 
-        <cfreturn getNumberOfRecords>
+        <cfset  variables.getNumberOfRecords = listLen(#subscriberResult.generated_key#)> 
+        <cfreturn  variables.getNumberOfRecords>
     </cffunction>
 </cfcomponent>

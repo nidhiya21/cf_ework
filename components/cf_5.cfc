@@ -1,59 +1,59 @@
 <cfcomponent output="false"> 
     <cffunction name="ageSinceDOB" access="public">
         <cfargument name="dob" type="string" required="yes" >
-        <cfset ageYR = DateDiff('yyyy', dob, NOW())>
-        <cfset ageMO = DateDiff('m', dob, NOW())>
-        <cfset ageWK = DateDiff('ww', dob, NOW())>
-        <cfset ageDY = DateDiff('d', dob, NOW())>
-        <cfset age = "">         
+        <cfset variables.ageYR = DateDiff('yyyy', dob, NOW())>
+        <cfset variables.ageMO = DateDiff('m', dob, NOW())>
+        <cfset variables.ageWK = DateDiff('ww', dob, NOW())>
+        <cfset variables.ageDY = DateDiff('d', dob, NOW())>
+        <cfset variables.age = "">         
         <cfif (isDate(dob))>    
             <cfif (now() LT dob)>
-                <cfset age = "NA">
+                <cfset variables.age = "NA">
             <cfelse>
-                <cfif (ageYR LT 2) >
-                    <cfset age = ageMO & "m">
+                <cfif (variables.ageYR LT 2) >
+                    <cfset variables.age = variables.ageMO & "m">
                     <cfif (ageMO LT 1) >
-                        <cfset age = ageWK & "w">
+                        <cfset variables.age = variables.ageWK & "w">
                     </cfif>
-                    <cfif (ageWK LT 1) >
-                        <cfset age = ageDY & "d">
+                    <cfif (variables.ageWK LT 1) >
+                        <cfset variables.age = variables.ageDY & "d">
                     </cfif>
                 <cfelse>
-                    <cfset age = ageYR & "y">
+                    <cfset variables.age = variables.ageYR & "y">
                 </cfif> 
             </cfif>
         <cfelse>   
-            <cfset age = "NA"/>
+            <cfset variables.age = "NA"/>
         </cfif> 
-        <cfreturn age> 
+        <cfreturn variables.age> 
     </cffunction>
     <cffunction name="deliverage" access="public">
         <cfargument name="dob" type="string" required="yes" >
-        <cfset userAge = "11/21/1991">
-        <cfset ageYR = DateDiff('yyyy', dob, userAge)/>
-        <cfset ageMO = DateDiff('m', dob, userAge)>
-        <cfset ageWK = DateDiff('ww', dob, userAge)>
-        <cfset ageDY = DateDiff('d', dob, userAge)>
-        <cfset age = "">         
+        <cfset variables.userAge = "11/21/1991">
+        <cfset variables.ageYR = DateDiff('yyyy', dob, variables.userAge)/>
+        <cfset variables.ageMO = DateDiff('m', dob, variables.userAge)>
+        <cfset variables.ageWK = DateDiff('ww', dob, variables.userAge)>
+        <cfset variables.ageDY = DateDiff('d', dob, variables.userAge)>
+        <cfset variables.age = "">         
         <cfif (isDate(dob))>    
             <cfif (now() LT dob)>
-                <cfset age = "NA">
+                <cfset variables.age = "NA">
             <cfelse>
-                <cfif (ageYR LT 2) >
-                    <cfset age = ageMO & "m">
-                    <cfif (ageMO LT 1) >
-                        <cfset age = ageWK & "w">
+                <cfif (variables.ageYR LT 2) >
+                    <cfset variables.age = variables.ageMO & "m">
+                    <cfif (variables.ageMO LT 1) >
+                        <cfset variables.age = variables.ageWK & "w">
                     </cfif>
                     <cfif (ageWK LT 1) >
-                        <cfset age = ageDY & "d">
+                        <cfset variables.age = variables.ageDY & "d">
                     </cfif>
                 <cfelse>
-                    <cfset age = ageYR & "y">
+                    <cfset variables.age = variables.ageYR & "y">
                 </cfif> 
             </cfif>
         <cfelse>   
-            <cfset age = "NA"/>
+            <cfset variables.age = "NA"/>
         </cfif> 
-        <cfreturn age>
+        <cfreturn variables.age>
     </cffunction>
 </cfcomponent>

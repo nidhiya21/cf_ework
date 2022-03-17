@@ -7,51 +7,13 @@
 <link href="./css/button.css" rel="stylesheet" type="text/css"/>
 <link href="./css/index.css" rel="stylesheet" type="text/css"/>
 <link href="./css/theme.css" rel="stylesheet" type="text/css"/> 
-<script type = "text/javascript">
-    function validate() {
-        if( document.form54.Field17.value == "" ) {
-            alert( "Please select any position!" );
-            document.form54.Field17.focus() ;
-            return false;
-        }
-        if( document.form54.Field19.value == "" ) {
-            alert( "Please select any relocate area!" );
-            document.form54.Field19.focus() ;
-            return false;
-        }
-        if( document.form54.Field20.value == "" ) {
-            alert( "Please select start date!" );
-            document.form54.Field20.focus() ;
-            return false;
-        }
-        if( document.form54.Field22.value == "" ) { 
-            alert( "Please enter first name!" );
-            document.form54.Field22.focus() ;
-            return false;
-        }
-
-        if( document.form54.Field23.value == "" ) {
-            alert( "Please provide last name!" );
-            return false;
-        }
-        if( document.form54.Field13.value == "" ) {
-            alert( "Please provide email address!" );
-            return false;
-        }
-        if( document.form54.Field25.value == "" ) {
-            alert( "Please provide phone!" );
-            return false;
-        }
-        return(true);
-    }
-</script>
+<script src="./js/cf_23.js"></script>
 </head>
 <body>
 <cfif structKeyExists(form,'saveForm')>
     <cfif structKeyExists(form,"Field12") and len(trim(form.Field12))>
-        <cfset thisDir = expandPath(".")>
-        <cffile action="upload" fileField="Field12" destination="#thisDir#" result="fileUpload"
-        nameconflict="overwrite" accept="application/pdf,application/vnd.ms-word" >
+        <cfinvoke component="components.cf_23" method="fileUpload" returnvariable="serverfiles">  
+        </cfinvoke>  
     </cfif>
         <cfset concatendatedSring1="#form.Field25#"&"#form.Field251#"&"#form.Field252#">
         <cfset concatendatedSring2="#form.Field16#"&"#form.Field161#">
@@ -60,7 +22,7 @@
             <cfinvokeargument name="relocate"  value = "#form.Field19#" />
             <cfinvokeargument name="start_date"  value = "#form.Field20#" />
             <cfinvokeargument name="website"  value = "#form.Field14#" />
-            <cfinvokeargument name="resume"  value = "#fileUpload.serverfile#"/>
+            <cfinvokeargument name="resume"  value = "#serverfiles#"/>
             <cfinvokeargument name="salary"  value = "#concatendatedSring2#" />
             <cfinvokeargument name="firstName"  value = "#form.Field22#" />
             <cfinvokeargument name="lastName"  value = "#form.Field23#" />
@@ -76,7 +38,14 @@
 <div id="container" class="ltr ">
     <h1 id="logo">
     <a href="https://www.wufoo.com/?utm_source=form-header&amp;utm_medium=logo" target="_blank" title="Powered by Wufoo">Wufoo</a>
-    </h1>
+    </h1>  
+        <cfparam name="form.Field17" default=""> 
+        <cfparam name="form.Field19" default=""> 
+        <cfparam name="form.Field20" default=""> 
+        <cfparam name="form.Field14" default=""> 
+        <cfparam name="form.Field22" default=""> 
+        <cfparam name="form.Field23" default=""> 
+        <cfparam name="form.Field13" default=""> 
         <form id="form54" name="form54" class="wufoo  page1" a enctype="multipart/form-data" method="post" action="">
             <header id="header" class="info">
                 <h2 class="">Employment Application</h2>

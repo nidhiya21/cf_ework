@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="./css/bootstrap.css" rel="stylesheet" type="text/css"/> 
+<link href="./css/welcome.css" rel="stylesheet" type="text/css"/> 
 <title>Task 25-3</title>
 </head>
 <body>  
@@ -11,15 +12,15 @@
         <cfset GetWordsAll = application.tagcloud.GetWordsAll() />
         <cfloop query="GetWordsAll">
             <cfif #GetWordsAll.count# GTE 4>
-                <cfset style="color:red;font-size:25pt;" > 
+                <cfset variables.stclass="style1" >
             <cfelseif #GetWordsAll.count# EQ 3>
-                <cfset style="color:yellow;font-size:22pt;" > 
+                <cfset variables.stclass="style2" >
             <cfelseif #GetWordsAll.count# EQ 2>
-                <cfset style="color:green;font-size:18pt;" > 
+                <cfset variables.stclass="style3" > 
             <cfelse>    
-                <cfset style="color:blue;font-size:14pt;" > 
+                <cfset variables.stclass="style4" > 
             </cfif>  
-            <cfoutput><p style=#style#>- #GetWordsAll.paragraph#(#GetWordsAll.count#)<p><br></cfoutput>
+            <cfoutput><p class="#stclass#">- #GetWordsAll.paragraph#(#GetWordsAll.count#)<p><br></cfoutput>
         </cfloop>  
     </div> 
 </body>

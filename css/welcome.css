@@ -30,3 +30,21 @@ text-align: center;
 .role{
     text-transform: uppercase;
 }
+.style1{
+    color:red;font-size:25pt;
+}
+.style2{
+    color:yellow;font-size:22pt;
+}
+.style3{
+    color:green;font-size:18pt;
+}
+.style4{
+    color:blue;font-size:14pt;
+}
+.styleGreen{
+    color:green;font-weight:900;
+}
+.styleBlue{
+    color:blue;font-weight:900
+}

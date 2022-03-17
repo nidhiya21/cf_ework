@@ -4,15 +4,15 @@
         <cfset stringInfo = application.tagCloud.getString(myfile) />
         <cfset sorted = structSort(stringInfo)>
         <cfloop index="word" array="#sorted#"> 
-            <cfquery  name="addPage">
+            <cfquery  name="local.addPage">
                 INSERT INTO tags(paragraph, count)
                 VALUES ('#word#',#stringInfo[word]#)
             </cfquery>  
         </cfloop> 
-        <cfquery NAME="GetWords" result="result"> 
+        <cfquery name="local.GetWords" result="result"> 
             SELECT paragraph,count
             FROM tags   ORDER BY count DESC,paragraph ASC
         </cfquery>
-        <cfreturn GetWords> 
+        <cfreturn local.GetWords> 
     </cffunction>
 </cfcomponent>

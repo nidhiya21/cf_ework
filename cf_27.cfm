@@ -29,6 +29,8 @@
         <h2>Task 27</h2>
         <h2>Login</h2>
         <div class="row">
+            <cfparam name="form.username" default=""> 
+            <cfparam name="form.password" default="">   
             <form name="CFForm_1"  method=post>
                 <div class="form-group col-md-4">
                     <label>Email login</label>

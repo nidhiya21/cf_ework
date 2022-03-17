@@ -1,9 +1,9 @@
 <cfcomponent>
     <cffunction name="multiply">
-          <cfset result = 1>
+          <cfset variables.result = 1>
           <cfloop collection="#Arguments#" item="i">    
-            <cfset result =  result*Arguments[i]>
+            <cfset variables.result =  result*Arguments[i]>
           </cfloop>
-          <cfreturn result>   
+          <cfreturn variables.result>   
     </cffunction>
 </cfcomponent>

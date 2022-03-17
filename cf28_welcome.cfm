@@ -30,7 +30,7 @@
                     <td valign = top> #pageList.pagename#</font> </td> 
                     <td valign = top> #pageList.pagedesc#</font> </td>
                     <td valign = top> 
-                    <a href="cf28_new.cfm?id=#pageList.pageid#">Edit</a> / <a href="cf_28.cfc?method=deleteuser&did=#pageList.pageid#">Delete</a></font> </td>  
+                    <a href="cf28_new.cfm?id=#pageList.pageid#">Edit</a> / <a href="components/cf_28.cfc?method=deleteuser&did=#pageList.pageid#">Delete</a></font> </td>  
                 </tr> 
                 </cfoutput> 
             </table> 

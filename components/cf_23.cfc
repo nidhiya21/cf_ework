@@ -10,7 +10,7 @@
         <cfargument name="lastName" type="string" required="yes" >
         <cfargument name="emailAddress" type="string" required="yes" >
         <cfargument name="phoneNumber" type="numeric" required="yes" >
-        <cfquery name="saveEmployeeDetails" result="employeeResult">
+        <cfquery name="Local.saveEmployeeDetails" result="employeeResult">
             INSERT INTO employee_application
             ( 
             position,relocate,start_date,website,resume,salary,firstName,lastName,emailAddress,phoneNumber
@@ -29,7 +29,14 @@
             ,<cfqueryparam cfsqltype="cf_sql_integer" value="#phoneNumber#" />
             )
         </cfquery>
-        <cfset getNumberOfRecords = listLen(#employeeResult.generated_key#)> 
-        <cfreturn getNumberOfRecords>
+        <cfset variables.getNumberOfRecords = listLen(#employeeResult.generated_key#)> 
+        <cfreturn variables.getNumberOfRecords>
+    </cffunction>
+    <cffunction name="fileUpload" access="public">
+        <cfset thisDir = expandPath(".")>
+        <cffile action="upload" fileField="Field12" destination="#thisDir#" result="fileUpload"
+        nameconflict="overwrite" accept="application/pdf,application/vnd.ms-word" >
+        <cfset variables.serverfiles ="#fileUpload.serverfile#">
+        <cfreturn variables.serverfiles>
     </cffunction>
 </cfcomponent>

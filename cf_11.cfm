@@ -14,9 +14,9 @@
         var i = 0; 
         for( i = 1 ; i LTE arg_count; i = i + 1 ) 
         { 
-            mul = mul * Arguments[i]; 
+            var mul = mul * Arguments[i]; 
         } 
-        return mul; 
+        return  mul; 
         }
     </cfscript>
     <div class="container mt-3">

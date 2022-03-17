@@ -13,25 +13,25 @@
                         destination="#expandpath("./images/")##form.imageName#.#cffile.serverFileExt#"/>
                     <cfimage action="resize" source="#expandpath("./images/")##form.imageName#.#cffile.serverFileExt#"
                         destination="#expandpath("./images/thumb/")##form.imageName#.#cffile.serverFileExt#" height="20" width="20" overwrite="yes"/> 
-                        <cfset destinationImage=#form.imageName#&"."&#cffile.serverFileExt#>  
-                        <cfset status ="success">
-                        <cfset serverFileExt =#cffile.serverFileExt#>
+                        <cfset variables.destinationImage=#form.imageName#&"."&#cffile.serverFileExt#>  
+                        <cfset variables.status ="success">
+                        <cfset variables.serverFileExt =#cffile.serverFileExt#>
                 <cfelse>
                         <center>
-                            Your file size of #cgi.content_length# is too big!
+                            Your file size  is too big!
                             <br>
-                            The maximum size allowed is #fileSizeLimit#.
+                            The maximum size allowed is exceeded.
                         </center>
-                         <cfset status ="failure">
+                         <cfset variables.status ="failure">
                        
                 </cfif>
-                <cfset result = {
-                    "status" = status,
-                    "destinationImage" = destinationImage,
-                    "serverFileExt" = serverFileExt
+                <cfset variables.result = {
+                    "status" = variables.status,
+                    "destinationImage" = variables.destinationImage,
+                    "serverFileExt" = variables.serverFileExt
                     
                 }>
         </cfif> 
-        <cfreturn result>
+        <cfreturn variables.result>
     </cffunction>
 </cfcomponent>

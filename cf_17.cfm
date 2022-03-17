@@ -6,24 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Task 17</title>
 <link href="./css/bootstrap.css" rel="stylesheet" type="text/css"/>
-<script>
-    function checkit() {
-        var v = document.getElementById("text1").value;    
-        if(!v.match(/^[0-9]+$/)) {
-            alert('Please only enter numeric characters');
-            return false;
-        }
-    }
-</script>
+<link href="./css/welcome.css" rel="stylesheet" type="text/css"/>
+<script src="./js/cf_17.js"></script>
 </head>
 <body>     
     <div class="container">
         <div class="row">
-            <h2>Tak 17</h2> 
-            <form action="cf_17.cfm" name="form" method="post" onsubmit="return checkit()"> 
+            <h2>Tak 17</h2>
+            <cfparam name="form.text1" default="0"> 
+            <form action="cf_17.cfm" name="form"  method="post" onsubmit="return checkit()"> 
                 <div class="form-group col-md-4">
                     <label>Enter number</label>
-                    <input type="text" name="text1" id="text1" class="form-control"> 
+                    <input type="text" name="text1" id="text1"  class="form-control"> 
                 </div><br>
                 <div class="form-group col-md-4"> 
                     <label></label> 
@@ -32,16 +26,19 @@
             </form> 
         </div>
         <cfif (isDefined("form.text1"))> 
-            <cfoutput>
-                <cfloop from="1" to=#form.text1# index="idx"> 
-                    <cfif #idx# MOD 2 eq 0>
-                        <cfset style="color:green;font-weight:900">
-                    <cfelse>
-                        <cfset style="color:blue;font-weight:900"> 
-                    </cfif>
-                    <span style="#style#"> #idx#  </span><br>
-                </cfloop>
-            </cfoutput>
+            <cfloop from="1" to=#form.text1# index="idx" step = "1"> 
+                <cfinvoke component="components.cf_17" method="numberList" returnvariable="result">  
+                <cfinvokeargument name="num" value=#idx#/> 
+                </cfinvoke> 
+                <cfif result.status eq "even">
+                    <cfset variables.stclass="styleGreen" >
+                <cfelse>
+                    <cfset variables.stclass="styleBlue" >
+                </cfif>
+                <cfoutput>
+                <span class="#stclass#"> #result.idx#  </span><br>
+                </cfoutput>
+            </cfloop>
         </cfif>       
     </div>
 </body> 

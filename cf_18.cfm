@@ -10,9 +10,8 @@
 <body>
         <h2>Task 18</h2>
         <div class="container">
-            <cfscript>
-                qryResult = queryExecute("SELECT * FROM employee", {}, {datasource="cf_task_employee"});
-            </cfscript>
+            <cfinvoke component="components.cf_18" method="empList" returnvariable="qryResult">  
+            </cfinvoke> 
             <cfdump var="#qryResult#">
         </div>
 </body> 
