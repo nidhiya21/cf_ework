@@ -28,23 +28,8 @@
 		</div>
 	</div>
 	<cfif structKeyExists(form,"formSubmit")>
-		<cfif NOT StructKeyExists(Session, "mystruct")>
-			<cflock timeout=20 scope="Session" type="Exclusive">
-				<cfset Session.mystruct = structNew()>
-			</cflock>
-		</cfif>
-		<cfif StructKeyExists(Session, "mystruct")> 
-				<cfif NOT StructKeyExists(Session.mystruct,"#form.textKey#")> 
-					<cfset Session.mystruct["#Form.textKey#"] = #form.textVal#> 
-				<cfelse>
-					<cfscript>
-						StructUpdate(Session.mystruct,"#Form.textKey#",#form.textVal#); 
-					</cfscript>
-				</cfif> 
-		</cfif>
-		<cfscript>
-			StructSort(Session.mystruct,"text","asc");
-		</cfscript>
+		<cfinvoke component="components.cf_7" method="checkStructuresExist" returnvariable="mystruct">
+        </cfinvoke> 
 		<cfdump var="#Session.mystruct#" > 
 	</cfif>
 </body>

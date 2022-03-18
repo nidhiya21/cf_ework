@@ -37,20 +37,20 @@
         <cfif StructKeyExists(Form,'formSubmit')> 
             <cfinvoke component="components.cf_14" method="imageUpload" returnvariable="result">  
             </cfinvoke>           
-                    <cfif #result.status# eq "success">
-                            <p>Thankyou, your for updating data.Your updated datas below</p> 
-                            <p>Image Name is : 
-                                <a href="cf_14detail.cfm?name=#form.imageName#&desc=#form.imageDescription#&img=#result.destinationImage#"> 
-                                #form.imageName#</a>
-                            </p>
-                            <img src="./images/thumb/#form.imageName#.#result.serverFileExt#"/>
-                    <cfelse>
-                            <center>
-                                Your file size of #cgi.content_length# is too big!
-                                <br>
-                                The maximum size allowed is #fileSizeLimit#.
-                            </center>
-                    </cfif>                       
+                <cfif #result.status# eq "success">
+                    <p>Thankyou, your for updating data.Your updated datas below</p> 
+                    <p>Image Name is : 
+                        <a href="cf_14detail.cfm?name=#form.imageName#&desc=#form.imageDescription#&img=#result.destinationImage#"> 
+                        #form.imageName#</a>
+                    </p>
+                    <img src="./images/thumb/#form.imageName#.#result.serverFileExt#"/>
+                <cfelse>
+                    <center>
+                        Your file size of #cgi.content_length# is too big!
+                        <br>
+                        The maximum size allowed is #fileSizeLimit#.
+                    </center>
+                </cfif>                       
         </cfif>
     </div>
 </cfoutput> 

@@ -6,17 +6,17 @@
             var row=[];
             var myMatrix2DArray=[];
             initialArray.reduce( 
-                    ( acc, element ) => {
-                            if( acc mod 3 == 0 ){
-                                row.append( element );
-                                myMatrix2DArray.append( row );
-                                row=[];
-                                return 1;
-                            }else{
-                                row.append( element );
-                                return acc+1;
-                            }
-                    }, 1 );
+                ( acc, element ) => {
+                        if( acc mod 3 == 0 ){
+                            row.append( element );
+                            myMatrix2DArray.append( row );
+                            row=[];
+                            return 1;
+                        }else{
+                            row.append( element );
+                            return acc+1;
+                        }
+                }, 1 );
         </cfscript>
         <cfreturn myMatrix2DArray>
     </cffunction>

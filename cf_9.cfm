@@ -29,19 +29,13 @@
 		</div>
 	</div>
 	<cfif structKeyExists(form,"formSubmit")>
-		<cfif NOT StructKeyExists(Session, "mystruct")>
-			<cflock timeout=20 scope="Session" type="Exclusive">
-				<cfset Session.mystruct = structNew()>
-			</cflock>
+		<cfinvoke component="components.cf_7" method="checkinStructures" returnvariable="result">
+        </cfinvoke>
+		<cfif #result.status# eq "success">
+			<cfdump var="#Session.mystruct#" > 
+		<cfelse>
+			<cfoutput>Key already present. Cannot add again</cfoutput>
 		</cfif>
-		<cfif StructKeyExists(Session, "mystruct")> 
-			<cfif NOT StructKeyExists(Session.mystruct,"#form.textKey#")> 
-				<cfset Session.mystruct["#Form.textKey#"] = #form.textVal#> 
-			<cfelse>
-				<cfoutput>Key already present. Cannot add again</cfoutput>
-			</cfif>
-		</cfif>
-		<cfdump var="#Session.mystruct#" > 
 	</cfif>
 </body>
 </html>

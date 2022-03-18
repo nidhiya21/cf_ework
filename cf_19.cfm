@@ -14,9 +14,9 @@
                  <input type="submit" value="Next Page" class="btn btn-success" name="nextpage">
             </form>  
                <cfif StructKeyExists(Form,'nextpage')>           
-                         <cfinvoke component="components.cf_19" method="cookieCnt" returnvariable="result">  
-                         </cfinvoke>
-                         <cfoutput>You clicked <b>#result#</b> times</cfoutput> 
+                    <cfinvoke component="components.cf_19" method="cookieCnt" returnvariable="result">  
+                    </cfinvoke>
+                    <cfoutput>You clicked <b>#result#</b> times</cfoutput> 
                </cfif> 
            
         </div> 

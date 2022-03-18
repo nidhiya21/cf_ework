@@ -16,7 +16,7 @@
     </cfinvoke>
     <cfif result GT 0>
         <script>
-        alert("Employee Addedd Successfully");
+            alert("Subscribed Successfully");
         </script>
      </cfif>
     </cfif>
@@ -27,8 +27,12 @@
         <cfparam name="form.username" default=""> 
         <form name="form" method="post"> 
             <div class="mb-3 mt-3">
-                <input type="name" id="username" name="username" class="form-control" placeholder="Enter Name" /></br>
-                <input type="email" id="useremail"  name="useremail" class="form-control" placeholder="you@example.com" /></br> 
+                <div class="form-group col-md-4">
+                     <input type="name" id="username" name="username"  placeholder="Enter Name" />
+                </div></br>
+                <div class="form-group col-md-4">
+                      <input type="email" id="useremail"  name="useremail"  placeholder="you@example.com" /> 
+                </div></br>
                 <input name="inputSubmit" class="btn btn-primary" type="submit">  
                 <input type="button" name="Finalize" value="Check User Exist" class="btn btn-primary" onClick="checkUserExists();"/>
             </div>

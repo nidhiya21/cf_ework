@@ -16,7 +16,7 @@
                 <label for="number">Enter the word to search:</label>
                 <input name="inputSearch" type="text" >
             </div>
-                <input name="inputSubmit" class="btn btn-primary" type="submit" validateAt="onSubmit" >
+            <input name="inputSubmit" class="btn btn-primary" type="submit" validateAt="onSubmit" >
         </form>
     </div>
     <cfif structKeyExists(form,'inputSubmit')>

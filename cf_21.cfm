@@ -15,9 +15,9 @@
                  <cfinvoke component="components.cf_21" method="greetingMailsent" returnvariable="status">  
                  </cfinvoke>   
                  <cfif status eq "success">
-                    <p>Thank you for sending message.</p>
+                     <p>Error</p>   
                  <cfelse>  
-                    <p>Error</p>
+                     <p>Thank you for sending message.</p>
                  </cfif>
             </cfif>
         </cfif>

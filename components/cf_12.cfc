@@ -1,7 +1,7 @@
 <cfcomponent output="false"> 
     <cffunction name="GetSpecificUserVal" access="public">
         <cfargument name="inputNum" type="numeric" required="yes" >
-            <cfquery name = "GetSpecificUser"  >         
+            <cfquery name = "local.GetSpecificUser"  >         
                 SELECT  firstName
                 FROM usersdetail
             </cfquery>
@@ -9,7 +9,7 @@
        <cfreturn variables.yourRow> 
     </cffunction> 
     <cffunction name="GetAllUser" access="public" >       
-            <cfquery name = "GetUser"   result="res2" >         
+            <cfquery name = "local.GetUser"   result="res2" >         
                 SELECT *
                 FROM usersdetail
             </cfquery>

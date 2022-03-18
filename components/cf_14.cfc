@@ -22,14 +22,12 @@
                             <br>
                             The maximum size allowed is exceeded.
                         </center>
-                         <cfset variables.status ="failure">
-                       
+                         <cfset variables.status ="failure">     
                 </cfif>
                 <cfset variables.result = {
                     "status" = variables.status,
                     "destinationImage" = variables.destinationImage,
-                    "serverFileExt" = variables.serverFileExt
-                    
+                    "serverFileExt" = variables.serverFileExt         
                 }>
         </cfif> 
         <cfreturn variables.result>

@@ -8,15 +8,16 @@
 </head>
 <body>
     <cfscript>
-        function mulitiply(Arg1,Arg2) { 
-        var arg_count = ArrayLen(Arguments); 
-        var mul = 1; 
-        var i = 0; 
-        for( i = 1 ; i LTE arg_count; i = i + 1 ) 
+        function mulitiply(Arg1,Arg2) 
         { 
-            var mul = mul * Arguments[i]; 
-        } 
-        return  mul; 
+            var arg_count = ArrayLen(Arguments); 
+            var mul = 1; 
+            var i = 0; 
+            for( i = 1 ; i LTE arg_count; i = i + 1 ) 
+            { 
+                var mul = mul * Arguments[i]; 
+            } 
+            return  mul; 
         }
     </cfscript>
     <div class="container mt-3">
